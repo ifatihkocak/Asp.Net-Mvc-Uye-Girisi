@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+}
+
+
+<h2>PROFİLİNİZ</h2>
+@if (Session["GirisKullaniciAD"] != null)
+{
+    <text>
+        <mark>Hoşgeldin</mark> <h2>@Session["GirisKullaniciAD"].ToString() </h2>
+    </text>
+}

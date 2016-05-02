@@ -1,0 +1,37 @@
+﻿@model Uyegirisuygulama.Models.Kullanicilar
+@{
+    ViewBag.Title = "Giris";
+}
+
+<h2>Giris</h2>
+
+@using (Html.BeginForm("Giris","Uye",FormMethod.Post))
+{
+    @Html.AntiForgeryToken() // CSRF Saldırısını Önlemek İçin
+    @Html.ValidationSummary(true)
+    if (ViewBag.Mesaj!=null)
+	{
+    <div style="border: 1px solid red">
+        @ViewBag.Mesaj
+    </div>
+    }
+    <table>
+        <tr>
+            <td>@Html.LabelFor(x=> x.Kul_AD,"Kullanici Adınız: ")</td>
+            <td>@Html.TextBoxFor(x=>x.Kul_AD)</td>
+            <td>@Html.ValidationMessageFor(x=>x.Kul_AD)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Kul_PAROLA, "Parola: ")</td>
+            <td>@Html.PasswordFor(x=>x.Kul_PAROLA)</td>
+            <td>@Html.ValidationMessageFor(x=>x.Kul_PAROLA)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Giriş Yap" />
+            </td>
+            <td></td>
+        </tr>
+    </table>
+}
